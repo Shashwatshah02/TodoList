@@ -1,0 +1,37 @@
+<%- include("header") -%>
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
+<div class="box">
+  <%for(var i = 0; i < listItems.length; i++){%>
+  <form action="/delete" method="post">
+    <div class="item">
+      <input
+        type="checkbox"
+        name="checkbox"
+        value="<%=listItems[i]._id%>"
+        onChange="this.form.submit()"
+      />
+      <p><%= listItems[i].name %></p>
+    </div>
+    <input type="hidden" name = "hiddenValues" value="<%= listTitle %>" />
+  </form>
+  <%}%>
+  <form class="item" action="/" method="post">
+    <input
+      type="text"
+      name="toDoItem"
+      id=""
+      placeholder="New Item"
+      autocomplete="off"
+    />
+    <button type="submit" name="button" value="<%= listTitle %>">+</button>
+  </form>
+</div>
+
+<!-- <%if(listTitle === "Friday"){%>
+    <h1 style="color: aqua">It is a <%= listTitle %> !</h1>
+    <%} else {%>
+    <h1 style="color: firebrick">It is a <%= listTitle %> !</h1>
+    <%}%> -->
+<%- include("footer") -%>
